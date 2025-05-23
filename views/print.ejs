@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pharmacy bill</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="h2s">
+        <h2>E-pharmacy meds</h2>
+         <h3>trichy,india-620002</h3>
+         <h3>GST NO:12345</h3>
+         <h3>phone:1234567890</h3>
+    </div>
+    <div class="headers">
+        <div class="headh">
+            <h3>bill no:<%=a%></h3>
+            <% for(let j=0;j< prdetail.length;j++){%>
+                 <h3>customer name: <%=prdetail[j].prcustomer%></h3>
+            <%}%>
+           
+        </div>
+        <div class="tailh">
+            <h3>System NO:01</h3>
+            <h3>date & time: <%=datetime%></h3>
+        </div>
+    </div>
+       <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>product name</th>
+                    <th>product quantity</th>
+                    <th>product rate</th>
+                    <th>amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%let grandtotal=0; %>
+                <% for(let i=0;i< prdetail.length;i++){%>
+                    <tr>
+                        <td><%=prdetail[i].prname%></td>
+                        <td><%=prdetail[i].prquantity%></td>
+                        <td><%=prdetail[i].prrate%></td>
+                        <td><%=prdetail[i].amount%></td>
+                    </tr>
+                    <% grandtotal+=prdetail[i].amount%>
+                <%}%>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>GRAND TOTAL:</td>
+                    <td><%=grandtotal%></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="no-prints">
+        <button onclick="window.print()" class="no-print">print</button>
+    </div>
+</body>
+</html>

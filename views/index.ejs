@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill portal</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+    <div class="h2s">
+        <h2>pharmacy billing</h2>
+    </div>
+<body >
+
+    <div class="ffdiv">
+        <div class="fdiv">
+        <div class="mainb">
+            <div class="inps">
+                <form action="/add" method="post" id="ip">
+                    <input type="text" name="prname" id="prname" placeholder="enter product name"><br>
+                    <input type="text" name="prquantity" id="prquantity" placeholder="enter quantity"><br>          
+                    <input type="text" name="prrate" id="prrate" placeholder="enter rate"> <br> 
+                    <input type="text" name="prcustomer" id="prcustomer" placeholder="enter customer name"> <br> 
+                    <button type="submit">submit</button>   
+                
+                </form>
+            </div>
+            <div class="btnsn">
+                <div class="clear">
+                    <form action="/clear" method="post" id="clr">
+                        <button type="submit">
+                        clear
+                        </button>
+                    </form>
+                </div>   
+                <div class="billing">
+                    <form action="/bill" method="post">
+                        <button id="bil">bill</button>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+   
+    <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <th>product name</th>
+                    <th>product quantity</th>
+                    <th>product rate</th>
+                    <th>amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%let grandtotal=0; %>
+                <% for(let i=0;i< prdetail.length;i++){%>
+                    <tr>
+                        <td><%=prdetail[i].prname%></td>
+                        <td><%=prdetail[i].prquantity%></td>
+                        <td><%=prdetail[i].prrate%></td>
+                        <td><%=prdetail[i].amount%></td>
+                    </tr>
+                    <% grandtotal+=prdetail[i].amount%>
+                <%}%>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>GRAND TOTAL:</td>
+                    <td><%=grandtotal%></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+     </div> 
+</body>
+</html>
